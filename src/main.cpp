@@ -4,12 +4,11 @@
 #include "Button.h"
 #include "Character.h"
 #include "Enemy.h"
+#include "Lifeheart.h"
 
 
-SDL_Event gEvent;
 
-LTexture gName;
-LTexture gMenuName;
+
 
 SDL_Window* gWindow = nullptr;
 SDL_Renderer* gRenderer = nullptr;
@@ -31,9 +30,13 @@ SDL_Rect gPlayAgainButton[BUTTON_TOTAL];
 SDL_Rect gCharacterClips[RUNNING_FRAMES];
 SDL_Rect gEnemyClips[FLYING_FRAMES];
 
+LTexture gName;
+LTexture gMenuName;
 LTexture gMenuTexture;
-//LTexture gScoreTexture;
-LTexture gBackgroundTexture[BACKGROUND_LAYER];
+LTexture gHeart1;
+LTexture gHeart2;
+LTexture gHeart3;
+LTexture gBackgroundTexture;
 LTexture gCharacterTexture;
 LTexture gGroundTexture;
 LTexture gPlayButtonTexture;
@@ -55,6 +58,9 @@ Button BackButton(BACK_BUTTON_POSX, BACK_BUTTON_POSY);
 Button PauseButton(PAUSE_BUTTON_POSX, PAUSE_BUTTON_POSY);
 Button ContinueButton(CONTINUE_BUTTON_POSX, CONTINUE_BUTTON_POSY);
 
+LifeHeart Heart1(80,20);
+LifeHeart Heart2(140,20);
+LifeHeart Heart3(200,20);
 Character character;
 
 int main(int argc, char* argv[])
@@ -73,7 +79,7 @@ int main(int argc, char* argv[])
         {
             bool Quit_Menu = false;
             bool Play_Again = false;
-            bool name = false;
+            std::string playname ;
             Mix_PlayMusic(gMenuMusic, IS_REPEATITIVE);
             while (!Quit_Menu)
             {
@@ -87,7 +93,7 @@ int main(int argc, char* argv[])
                     
                     bool Quit_Game = false;
                     HandlePlayButton(&e_mouse, gPlayButton, PlayButton, BackButton,gName,gMenuName,
-                    gBackButtonTexture,gRenderer,Play_Again,Quit_Menu,gClick,gFont);
+                    gBackButtonTexture,gRenderer,Play_Again,Quit_Menu,gClick,playname,gFont);
                         
                     HandleHighScoreButton(&e_mouse, gBackButton,
                                      HighScore, BackButton,
@@ -114,17 +120,19 @@ int main(int argc, char* argv[])
                 
                 SDL_RenderPresent(gRenderer);
             }
-            std::string playname = " e";
+            
             //if(!name) std::string PlayerName = InputText(e_mouse, gName, gMenuName, gFont, gRenderer, gClick) ;
             while (Play_Again)
             {
                 srand(time(NULL));
+                int check = 0;
+                int count = 3;
                 int time = 0;
                 int score = 0;
                 int acceleration = 0;
                 int frame_Character = 0;
                 int frame_Enemy = 0;
-                std::string highscore = GetHighScoreFromFile("high_score.txt");
+                std::string highscore = GetHighScoreFromFile("src/high_score.txt");
                 int hscore = GetHighScore();
                 SDL_Event e;
                 Enemy enemy1(ON_GROUND_ENEMY);
@@ -135,7 +143,7 @@ int main(int argc, char* argv[])
                 GenerateEnemy(enemy1, enemy2, enemy3, gEnemyClips, gRenderer);
 
                 int OffsetSpeed_Ground = BASE_OFFSET_SPEED;
-                std::vector <double> OffsetSpeed_Bkgr(BACKGROUND_LAYER, BASE_OFFSET_SPEED);
+                double OffsetSpeed_Background = BASE_OFFSET_SPEED;
 
                 bool Quit = false;
                 bool Game_State = true;
@@ -162,7 +170,7 @@ int main(int argc, char* argv[])
                         SDL_SetRenderDrawColor(gRenderer, 0xFF, 0xFF, 0xFF, 0xFF);
                         SDL_RenderClear(gRenderer);
 
-                        RenderScrollingBackground(OffsetSpeed_Bkgr, gBackgroundTexture, gRenderer);
+                        RenderScrollingBackground( OffsetSpeed_Background,gBackgroundTexture, gRenderer);
                         RenderScrollingGround(OffsetSpeed_Ground, acceleration, gGroundTexture, gRenderer);
 
 
@@ -179,7 +187,7 @@ int main(int argc, char* argv[])
                             character.Render(currentClip_Character, gRenderer, gCharacterTexture);
                         }
 
-
+                        
                         enemy1.Move(acceleration);
                         enemy1.Render(gRenderer);
             
@@ -197,23 +205,43 @@ int main(int argc, char* argv[])
 
                         DrawPlayerScore(gText1Texture, gScoreTexture, textColor, gRenderer, gFont, score);
                         DrawPlayerHighScore(gText2Texture, gHighScoreTexture, textColor, gRenderer, gFont, highscore);
-
+                        
+                        SDL_Rect* currentClip_heart = nullptr;
+                        if(count == 3){
+                        Heart1.Render(currentClip_heart,gRenderer,gHeart1);
+                        Heart2.Render(currentClip_heart,gRenderer,gHeart2);
+                        Heart3.Render(currentClip_heart,gRenderer,gHeart3);}
+                        if(count == 2){
+                            Heart1.Render(currentClip_heart,gRenderer,gHeart1);
+                            Heart2.Render(currentClip_heart,gRenderer,gHeart2);
+                        }
+                        if(count == 1){
+                            Heart1.Render(currentClip_heart,gRenderer,gHeart1);
+                        }
                         if (CheckEnemyColission(character,
                             enemy1, enemy2, enemy3,
-                            currentClip_Character, currentClip_Enemy))
+                            currentClip_Character, currentClip_Enemy,check))
                         {
-                            Mix_PauseMusic();
-                            Mix_PlayChannel(MIX_CHANNEL, gLose, NOT_REPEATITIVE);
-                            UpdateHighScore("high_score.txt", score, highscore);
-                            Quit = true;
+                            if(check != 0) {
+                                count--;
+                                Mix_PlayChannel(MIX_CHANNEL, gLose, NOT_REPEATITIVE);
+                            }
+                            if(count == 0){
+                                Mix_PauseMusic();
+                                Mix_PlayChannel(MIX_CHANNEL, gLose, NOT_REPEATITIVE);
+                                UpdateHighScore(playname, score, highscore);
+                                //UpdateHighScore2(playname,score,hscore,0);
+                                Quit = true;
+                            }
                         }
+                        if(time % 120 == 0) check = 0;
 
                         //SDL_Delay(5);
                         SDL_RenderPresent(gRenderer);
-                        ControlCharFrame(frame_Character);
-                        ControlEnemyFrame(frame_Enemy);
+                        CharFrame(frame_Character);
+                        EnemyFrame(frame_Enemy);
                     }
-                    UpdateHighScore2(playname,score,hscore,0);
+                    
                 }
 
                 DrawEndGameSelection(gLoseTexture, &e, gRenderer, Play_Again);
@@ -333,7 +361,7 @@ bool LoadMedia()
 
     else
     {
-        gFont = TTF_OpenFont("font/pixel_font.ttf", 28);
+        gFont = TTF_OpenFont("font/pixel_font.ttf", 30);
         if (gFont == NULL)
         {
             LogError("Failed to load font", MIX_ERROR);
@@ -356,6 +384,18 @@ bool LoadMedia()
             if (!gMenuTexture.LoadFromFile("imgs/background/menu.png", gRenderer))
             {
                 std::cout << "Failed to load menu image" << std::endl;
+                success = false;
+            }
+            if(!gHeart1.LoadFromFile("imgs/background/heart.png",gRenderer)){
+                std::cout<<"Failed to load heart image" << std::endl;
+                success = false;
+            }
+            if(!gHeart2.LoadFromFile("imgs/background/heart.png",gRenderer)){
+                std::cout<<"Failed to load heart image" << std::endl;
+                success = false;
+            }
+            if(!gHeart3.LoadFromFile("imgs/background/heart.png",gRenderer)){
+                std::cout<<"Failed to load heart image" << std::endl;
                 success = false;
             }
             if(!gMenuName.LoadFromFile("imgs/background/menuName.png", gRenderer))
@@ -466,7 +506,7 @@ bool LoadMedia()
 
             for (int i = 0; i < BACKGROUND_LAYER; ++i)
             {
-                if (!gBackgroundTexture[i].LoadFromFile(LAYER[i].c_str(), gRenderer))
+                if (!gBackgroundTexture.LoadFromFile(LAYER[i].c_str(), gRenderer))
                 {
                     std::cout << "Failed to load background image" << std::endl;
                     success = false;
@@ -544,10 +584,12 @@ void Close()
     gScoreTexture.Free();
     gText2Texture.Free();
     gHighScoreTexture.Free();
-
+    gHeart1.Free();
+    gHeart2.Free();
+    gHeart3.Free();
     for (int i = 0; i < BACKGROUND_LAYER; ++i)
     {
-        gBackgroundTexture[i].Free();
+        gBackgroundTexture.Free();
     }
 
     Mix_FreeMusic(gMusic);

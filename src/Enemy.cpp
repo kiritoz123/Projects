@@ -12,11 +12,11 @@ Enemy::Enemy(int _type){
     if(type == IN_AIR_ENEMY)
     {
         posX = rand() % (SCREEN_WIDTH + ENEMY_POSITION_RANGE) + SCREEN_WIDTH;
-		posY = rand() % 420 + 415;
+        posY =  330 ;
     }
     else if(type == ON_GROUND_ENEMY)
     {
-        posX = rand() % (SCREEN_WIDTH + ENEMY_POSITION_RANGE) + 100;
+        posX = rand() % (SCREEN_WIDTH + ENEMY_POSITION_RANGE) + 200;
         posY = GROUND - 8;
     }
     EnemyTexture = nullptr;
@@ -38,7 +38,7 @@ Enemy::~Enemy()
 }
 
 void Enemy::LoadFromFile(std::string path , SDL_Renderer* gRenderer)
-{   
+{
     SDL_Surface* Surface = IMG_Load(path.c_str());
     if(Surface == nullptr)
     {
@@ -62,62 +62,62 @@ void Enemy::LoadFromFile(std::string path , SDL_Renderer* gRenderer)
 
 void Enemy::Move(const int &acceleration)
 {
-	posX += -(ENEMY_SPEED + acceleration);
-	if (posX + MAX_ENEMY_WIDTH < 0)
-	{
-		posX = rand() % (SCREEN_WIDTH + ENEMY_POSITION_RANGE) + SCREEN_WIDTH;
+    posX += -(ENEMY_SPEED + acceleration);
+    if (posX + MAX_ENEMY_WIDTH < 0)
+    {
+        posX = rand() % (SCREEN_WIDTH + ENEMY_POSITION_RANGE) + SCREEN_WIDTH;
 
-		if (type == IN_AIR_ENEMY)
-		{
-			posY = rand() % 420 + 415 ;
-		}
-	}
+        if (type == IN_AIR_ENEMY)
+        {
+            posY = 330 ;
+        }
+    }
 }
 
 void Enemy::Render(SDL_Renderer* gRenderer, SDL_Rect* currentClip)
 {
-	SDL_Rect renderSpace = { posX, posY, eWidth, eHeight };
-	if (currentClip != nullptr)
-	{
-		renderSpace.w = currentClip->w;
-		renderSpace.h = currentClip->h;
-	}
-	SDL_RenderCopy(gRenderer, EnemyTexture, currentClip, &renderSpace);
+    SDL_Rect renderSpace = { posX, posY, eWidth, eHeight };
+    if (currentClip != nullptr)
+    {
+        renderSpace.w = currentClip->w;
+        renderSpace.h = currentClip->h;
+    }
+    SDL_RenderCopy(gRenderer, EnemyTexture, currentClip, &renderSpace);
 }
 
 int Enemy::GetType()
 {
-	if (type == IN_AIR_ENEMY)
-	{
-		return IN_AIR_ENEMY;
-	}
-	else
-	{
-		return ON_GROUND_ENEMY;
-	}
+    if (type == IN_AIR_ENEMY)
+    {
+        return IN_AIR_ENEMY;
+    }
+    else
+    {
+        return ON_GROUND_ENEMY;
+    }
 }
 
 int Enemy::GetSpeed(const int &acceleration)
 {
-	return ENEMY_SPEED + acceleration;
+    return ENEMY_SPEED + acceleration;
 }
 
 int Enemy::GetPosX()
 {
-	return posX;
+    return posX;
 }
 
 int Enemy::GetPosY()
 {
-	return posY;
+    return posY;
 }
 
 int Enemy::GetWidth()
 {
-	return eWidth;
+    return eWidth;
 }
 
 int Enemy::GetHeight()
 {
-	return eHeight;
+    return eHeight;
 }

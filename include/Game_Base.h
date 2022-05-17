@@ -33,7 +33,6 @@
 #define GROUND_SPEED 5
 #define ENEMY_SPEED 5
 #define MAX_ENEMY_WIDTH 100
-
 #define IN_AIR_ENEMY 1
 #define ON_GROUND_ENEMY 0
 
@@ -75,7 +74,7 @@ const int SCORE_POSY = 20;
 const int HIGH_SCORE_POSX = 830;
 const int HIGH_SCORE_POSY = 80;
 
-const double LAYER_1_SPEED = 1.0;
+const double LAYER_SPEED = 1.0;
 
 
 const int RUNNING_FRAMES = 6;
@@ -88,13 +87,13 @@ const int NUMBER_RANK = 7 ;
 
 enum ButtonSprite
 {
-	BUTTON_MOUSE_OUT = 0,
-	BUTTON_MOUSE_OVER = 1,
-	BUTTON_TOTAL = 2
+    BUTTON_MOUSE_OUT = 0,
+    BUTTON_MOUSE_OVER = 1,
+    BUTTON_TOTAL = 2
 };
 const std::string LAYER[BACKGROUND_LAYER] = {
-	"imgs/background/layer01.png",
-	
+    "imgs/background/layer01.png",
+    
 };
 
 void LogError(std::string msg, int error_code = SDL_ERROR);

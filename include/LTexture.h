@@ -25,7 +25,7 @@ private:
 
     SDL_Texture* mTexture;
 
-    SDL_Rect bRect, tRect;
+    SDL_Rect bRect;
 
     int mWidth;
     int mHeight;

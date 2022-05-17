@@ -14,12 +14,12 @@ int GetHighScore();
 std::string GetHighScoreFromFile(std::string path);
 void UpdateHighScore2(std::string& curName, int &score, int& oldHighScore, int type);
 void UpdateHighScore(std::string path,
-	const int& score, 
-	const std::string& old_high_score);
+    const int& score,
+    const std::string& old_high_score);
 void UpdateGameTimeAndScore(int& time, int& speed, int& score);
 
-void RenderScrollingBackground(std::vector<double>&offsetSpeed,
-    LTexture(&gBackgroundTexture)[BACKGROUND_LAYER],
+void RenderScrollingBackground(double& offsetSpeed,
+    LTexture gBackgroundTexture,
     SDL_Renderer* gRenderer);
 
 void RenderScrollingGround(int& speed,
@@ -28,25 +28,25 @@ void RenderScrollingGround(int& speed,
     SDL_Renderer* gRenderer);
 
 void HandlePlayButton(SDL_Event* e,
-	SDL_Rect(&gBackButton)[BUTTON_TOTAL],
-	Button& PlayButton, 
-	Button& BackButton,
-	LTexture gName,LTexture gMenuName,
-	LTexture gBackButtonTexture, 
-	SDL_Renderer *gRenderer, 
+    SDL_Rect(&gBackButton)[BUTTON_TOTAL],
+    Button& PlayButton,
+    Button& BackButton,
+    LTexture gName,LTexture gMenuName,
+    LTexture gBackButtonTexture,
+    SDL_Renderer *gRenderer,
     bool &name,
-	bool &Quit_game, 
-	Mix_Chunk *gClick,TTF_Font* gFont);
+    bool &Quit_game,
+    Mix_Chunk *gClick,std::string& playname,TTF_Font* gFont);
 
 void HandleHighScoreButton(SDL_Event* e,
-	SDL_Rect(&gBackButton)[BUTTON_TOTAL],
-	Button& HighScoreButton, 
-	Button& BackButton, 
-	LTexture gHighScoreTexture,
-	LTexture gBackButtonTexture, 
-	SDL_Renderer *gRenderer, 
-	bool &Quit_game, 
-	Mix_Chunk *gClick,TTF_Font* gFont);
+    SDL_Rect(&gBackButton)[BUTTON_TOTAL],
+    Button& HighScoreButton,
+    Button& BackButton,
+    LTexture gHighScoreTexture,
+    LTexture gBackButtonTexture,
+    SDL_Renderer *gRenderer,
+    bool &Quit_game,
+    Mix_Chunk *gClick,TTF_Font* gFont);
 
 
 void HandleExitButton(SDL_Event* e,
@@ -86,11 +86,12 @@ bool CheckEnemyColission(Character character,
     Enemy enemy2,
     Enemy enemy3,
     SDL_Rect* char_clip,
-    SDL_Rect* enemy_clip = nullptr);
+    SDL_Rect* enemy_clip,int& check
+    );
 
-void ControlCharFrame(int& frame);
+void CharFrame(int& frame);
 
-void ControlEnemyFrame(int& frame);
+void EnemyFrame(int& frame);
 
 void DrawPlayerScore(LTexture gTextTexture,
     LTexture gScoreTexture,
@@ -103,7 +104,7 @@ void DrawPlayerHighScore(LTexture gTextTexture,
     LTexture gHighScoreTexture,
     SDL_Color textColor,
     SDL_Renderer* gRenderer,
-    TTF_Font* gFont, 
+    TTF_Font* gFont,
     const std::string& HighScore);
 
 void DrawEndGameSelection(LTexture gLoseTexture,
