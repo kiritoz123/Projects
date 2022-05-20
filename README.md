@@ -37,6 +37,7 @@ các chướng ngại vật
   - [Tutorial: Create 2D Game Engine using C++ and SDL - MadsyCode](https://www.youtube.com/watch?v=1KD4Ae0tX0g&list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_)
   
 ##Conclusion
+
 Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game , cách clean code.
 
 Định hướng phát triển
