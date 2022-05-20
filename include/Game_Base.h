@@ -87,13 +87,13 @@ const int NUMBER_RANK = 7 ;
 
 enum ButtonSprite
 {
-    BUTTON_MOUSE_OUT = 0,
-    BUTTON_MOUSE_OVER = 1,
-    BUTTON_TOTAL = 2
+	BUTTON_MOUSE_OUT = 0,
+	BUTTON_MOUSE_OVER = 1,
+	BUTTON_TOTAL = 2
 };
 const std::string LAYER[BACKGROUND_LAYER] = {
-    "imgs/background/layer01.png",
-    
+	"imgs/background/layer01.png",
+	
 };
 
 void LogError(std::string msg, int error_code = SDL_ERROR);
