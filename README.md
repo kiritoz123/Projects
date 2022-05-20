@@ -7,7 +7,7 @@ Trần Quốc Huy - 21020331
 Một dự án trò chơi cho khóa học Lập trình nâng cao
 
 ## Set up
-git clone https://github.com/kiritoz123/Projects.git
+git clone "https://github.com/kiritoz123/Projects.git"
 
  - Win: build/file.exe
  - Mac: build/mac
