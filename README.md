@@ -22,7 +22,8 @@ Cách chơi
 các chướng ngại vật
 - Điểm số Highscore được xử lý theo thời gian trong game
 
-- [Video Demo] (https://youtu.be/a00vfieZijA)
+- [Video 
+ Demo] (https://youtu.be/a00vfieZijA)
 
 ##Preparation
 - C++ Basic
