@@ -21,7 +21,7 @@ Cách chơi
 - Nhiệm vụ của bạn: Đừng để nhân vật của bạn chết bằng cách nhấn vào phím * SPACE * để tránh
 các chướng ngại vật
 - Điểm số Highscore được xử lý theo thời gian trong game
-- [Video Demo]([(https://youtu.be/a00vfieZijA)])
+- [Video Demo](https://youtu.be/a00vfieZijA)
 
 
 
