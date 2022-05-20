@@ -17,7 +17,7 @@ MAC build/mac
 Main ideas for project:
 - A clone of Chrome Dinosaur
 - Hoàn thiện với hiệu ứng và hình ảnh ( https://arks.itch.io/dino-characters)
-Cách chơi 
+Cách chơi:
 - Nhiệm vụ của bạn: Đừng để nhân vật của bạn chết bằng cách nhấn vào phím * SPACE * để tránh
 các chướng ngại vật
 - Điểm số Highscore được xử lý theo thời gian trong game
