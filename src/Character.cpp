@@ -11,7 +11,7 @@ Character::Character()
     posX = SCREEN_WIDTH - 700;
     posY = GROUND;
 
-    status = 0;
+    status = RUN;
 }
 
 bool Character::onGround()
