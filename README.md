@@ -38,9 +38,8 @@ các chướng ngại vật
   
 ##Conclusion
 
-Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game , cách clean code.
-
-Định hướng phát triển
+-Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game , cách clean code.
+-Định hướng phát triển
 - Làm thêm nhiều nhân vật , mức độ chơi cho người chơi chọn
 - Thêm items cho nhân vật 
 - Thêm enemy cho độ khó theo game
