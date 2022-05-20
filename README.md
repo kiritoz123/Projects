@@ -35,6 +35,7 @@ các chướng ngại vật
   - [Lazy Foo' Production](https://lazyfoo.net/tutorials/SDL/)
   - [How To Make A Game In C++ & SDL2 From Scratch!](https://www.youtube.com/watch?v=QQzAHcojEKg&list=PLhfAbcv9cehhkG7ZQK0nfIGJC_C-wSLrx)
   - [Tutorial: Create 2D Game Engine using C++ and SDL - MadsyCode](https://www.youtube.com/watch?v=1KD4Ae0tX0g&list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_)
+  
 ##Conclusion
 Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game , cách clean code.
 
