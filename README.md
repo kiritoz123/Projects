@@ -21,7 +21,7 @@ Cách chơi
 - Nhiệm vụ của bạn: Đừng để nhân vật của bạn chết bằng cách nhấn vào phím * SPACE * để tránh
 các chướng ngại vật
 - Điểm số Highscore được xử lý theo thời gian trong game
-- [Video Demo]([[https://l.facebook.com/l.php?u=https%3A%2F%2Fyoutu.be%2FDIWSXSKCUtE%3Ffbclid%3DIwAR1WFvNjXk-2V_SopQpwaMiWsWRGXq3b9oneMfv48_N8uJt6anFXENhgAQo&h=AT1chO81EnZyn2_iTib9xP5QpP_Rww78_OlKGoFyvwgvOeMZeEAGOhUp39QtoLEkXAlyef4XgYtWHsj7A9QTSpKpoxXux_1zjxyeHJeurz18p_tAKRrPVd5Zjt1cIjGkdos9B2pBHKmn19KmyaY4tw](https://youtu.be/a00vfieZijA)](https://youtu.be/a00vfieZijA))
+- [Video Demo]([(https://youtu.be/a00vfieZijA)])
 
 
 
