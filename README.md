@@ -9,8 +9,8 @@ Một dự án trò chơi cho khóa học Lập trình nâng cao
 ## Set up
 git clone https://github.com/kiritoz123/Projects.git
 
- - WIN build/file.exe
- - MAC build/mac
+ - Win: build/file.exe
+ - Mac: build/mac
 
 ## Getting Started
 
