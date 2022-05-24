@@ -14,7 +14,7 @@ git clone https://github.com/kiritoz123/Projects.git
 
 ## Getting Started
 
-Main ideas for project:
+Ý tưởng :
 - A clone of Chrome Dinosaur
 - Hoàn thiện với hiệu ứng và hình ảnh ( https://arks.itch.io/dino-characters)
 
