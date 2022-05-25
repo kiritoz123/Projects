@@ -28,7 +28,7 @@ Các chức năng :
 - Menu trò chơi
 - Bảng điểm người chơi
 - Mỗi nhân vật có 3 mạng chơi 
-
+- Tốc độ tăng lên theo thời gian
 
 
 ## Preparation
@@ -36,7 +36,7 @@ Các chức năng :
 - Vector, Iterator and Pointer in C++
 - Class c++
 - Split code into multiple files in C++
-- SDL2 Libraries
+- SDL2 Libraries,SDL_mixer.h,SDL_ttf.h
 - Resources of the game (images, sprites, sound)
 - Code tutorials :
   - [Lazy Foo' Production](https://lazyfoo.net/tutorials/SDL/)
@@ -45,6 +45,7 @@ Các chức năng :
   
 ## Conclusion
 Học được kiến thức để sử dụng thư viện SDL2.
+
 Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game ,cách tổ chức chương trình, cách chia file,cách clean code.
 
 Định hướng phát triển
