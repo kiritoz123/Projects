@@ -44,9 +44,11 @@ Các chức năng :
   - [Tutorial: Create 2D Game Engine using C++ and SDL - MadsyCode](https://www.youtube.com/watch?v=1KD4Ae0tX0g&list=PL-K0viiuJ2RctP5nlJlqmHGeh66-GOZR_)
   
 ## Conclusion
-Học được kiến thức để sử dụng thư viện SDL2.
+Game đã có đủ các chức năng chính của một game dino cổ điển và có thêm những yếu tố mới. Code khá dễ hiểu và ngắn gọn tuy nhiên, vẫn còn một số điểm chưa phát triển hết mức có thể nên vẫn cần được hoàn thiện hơn trong tương lai.
 
-Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game ,cách tổ chức chương trình, cách chia file,cách clean code.
+Bài học
+- Học được kiến thức để sử dụng thư viện SDL2.
+- Hiểu được vòng lặp trong game,con trỏ , cách bắt đầu 1 dự án game ,cách tổ chức chương trình, cách chia file,cách clean code.
 
 Định hướng phát triển
 - Làm thêm nhiều nhân vật , mức độ chơi cho người chơi chọn
